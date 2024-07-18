@@ -25,18 +25,22 @@ const App = () => {
   const [numberOfPlayers, setNumberOfPlayers] = useState<number>(0);
   const [feedbackMessage, setFeedBackMessage] = useState<string>("");
   const [winnerMessage, setWinnerMessage] = useState<string>("");
-  const [jellyBeanNumber] = useState(Math.floor(Math.random() * 100) + 1);
+  const [jellyBeanNumber, setJellyBeanNumber] = useState<number>(
+    Math.floor(Math.random() * 100) + 1
+  );
   const [currentPlayerName, setCurrentPlayerName] = useState<string>("");
   const [currentPlayerGuess, setCurrentPlayerGuess] = useState<number>(0);
   const [players, setPlayers] = useState<User[]>([]);
   const [isDiscoverEnabled, setIsDiscoverEnabled] = useState<boolean>(false);
   const [feedbackTheme, setFeedbackTheme] = useState<string>("");
 
+  // function for  playing game
   const handlePlayButton = useCallback(() => {
     setShowPlaySection(true);
     setIsPlaying(true);
   }, []);
 
+  // function for initiating the game
   const handleStartGame = useCallback(() => {
     if (numberOfPlayers <= 0) {
       setFeedBackMessage("Please enter a vaild number of players");
@@ -46,6 +50,7 @@ const App = () => {
     setShowDataSection(true);
   }, [numberOfPlayers]);
 
+  // function to handle submission of player
   const handleSubmit = () => {
     console.log(currentPlayerGuess, currentPlayerName);
     //Check validation
@@ -91,6 +96,7 @@ const App = () => {
       theme = themes.wayOff;
     }
 
+    // set player
     setFeedbackTheme(theme);
     setPlayers([
       ...players,
@@ -106,6 +112,7 @@ const App = () => {
     }
   };
 
+  // function for announcing a winner
   const handleDiscoverClick = useCallback(() => {
     const winner = players.find((player) => player.guess === jellyBeanNumber);
     if (winner) {
@@ -117,10 +124,23 @@ const App = () => {
         `No one guessed the correct number. The correct number of jelly beans was ${jellyBeanNumber}.`
       );
     }
-  }, []);
+
+    // Restart the game
+    setIsPlaying(false);
+    setShowPlaySection(false);
+    setShowDataSection(false);
+    setNumberOfPlayers(0);
+    setFeedBackMessage("");
+    setPlayers([]);
+    setIsDiscoverEnabled(false);
+    setJellyBeanNumber(Math.floor(Math.random() * 100) + 1);
+    setCurrentPlayerName("");
+    setCurrentPlayerGuess(0);
+  }, [jellyBeanNumber, players]);
 
   return (
     <Container>
+      {/* header */}
       <Logo src={logo} />
       <h2>Guess the Number of Jelly Beans (1 to 100)</h2>
       {!showPlaySection && (
@@ -128,6 +148,8 @@ const App = () => {
           Play
         </Button>
       )}
+
+      {/* number of player */}
       {showPlaySection && (
         <InputContainer>
           <Label>Number of Players: </Label>
@@ -140,6 +162,8 @@ const App = () => {
           <Button onClick={() => handleStartGame()}>Start</Button>
         </InputContainer>
       )}
+
+      {/* player guess and name */}
       {showDataSection && (
         <DataContainer>
           <InputContainer>
@@ -165,6 +189,8 @@ const App = () => {
           <Button onClick={() => handleSubmit()}>Submit</Button>
         </DataContainer>
       )}
+
+      {/* display all player guess and name */}
       <Display>
         {players.map((player, index) => (
           <UserEntry key={index} theme={player.theme}>
@@ -180,16 +206,20 @@ const App = () => {
         ))}
       </Display>
 
+      {/* discover button */}
       <Button onClick={handleDiscoverClick} disabled={!isDiscoverEnabled}>
         Discover
       </Button>
 
+      {/* modal to display feed back message */}
       <Modal show={feedbackMessage !== ""}>
         <ModalContent>
           {feedbackMessage}
           <Close onClick={() => setFeedBackMessage("")}>&times;</Close>
         </ModalContent>
       </Modal>
+
+      {/* modal to display victory or eof game message */}
       <Modal show={winnerMessage !== ""}>
         <ModalContent>
           {winnerMessage}

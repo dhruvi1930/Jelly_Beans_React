@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ModalProps } from "./types";
+import { ModalProps, UserProps } from "./types";
 
 const Container = styled.div`
   text-align: center;
@@ -36,7 +36,7 @@ const InputContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding-top: 20px;
+  padding: 10px;
 `;
 
 const Label = styled.label`
@@ -91,7 +91,6 @@ const Close = styled.span`
 const DataContainer = styled.div`
   margin: 30px;
   padding: 20px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,6 +99,37 @@ const DataContainer = styled.div`
   width: 50%;
   border-radius: 10px;
   background: #fff;
+
+  @media (max-width: 600px) {
+    width: auto;
+  }
+`;
+const themes = {
+  perfect: "#a8e6cf",
+  veryClose: "#dcedc1",
+  close: "#ffd3b6",
+  notTooFar: "#ffaaa5",
+  wayOff: "#ff8b94",
+};
+
+const Display = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 100px;
+`;
+
+const UserEntry = styled.div<UserProps>`
+  padding: 10px 10px;
+  border-radius: 10px;
+  width: 100px;
+  background-color: ${({ theme }) => theme};
+`;
+
+const Data = styled.p`
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
 `;
 
 export {
@@ -113,4 +143,8 @@ export {
   ModalContent,
   Close,
   DataContainer,
+  themes,
+  Display,
+  UserEntry,
+  Data,
 };

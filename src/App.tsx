@@ -106,6 +106,19 @@ const App = () => {
     }
   };
 
+  const handleDiscoverClick = useCallback(() => {
+    const winner = players.find((player) => player.guess === jellyBeanNumber);
+    if (winner) {
+      setWinnerMessage(
+        `${winner.name} is the winner! The correct number of jelly beans was ${jellyBeanNumber}. 🎉🎊`
+      );
+    } else {
+      setWinnerMessage(
+        `No one guessed the correct number. The correct number of jelly beans was ${jellyBeanNumber}.`
+      );
+    }
+  }, []);
+
   return (
     <Container>
       <Logo src={logo} />
@@ -166,13 +179,21 @@ const App = () => {
           </UserEntry>
         ))}
       </Display>
+
       <Button onClick={handleDiscoverClick} disabled={!isDiscoverEnabled}>
         Discover
       </Button>
+
       <Modal show={feedbackMessage !== ""}>
         <ModalContent>
           {feedbackMessage}
           <Close onClick={() => setFeedBackMessage("")}>&times;</Close>
+        </ModalContent>
+      </Modal>
+      <Modal show={winnerMessage !== ""}>
+        <ModalContent>
+          {winnerMessage}
+          <Close onClick={() => setWinnerMessage("")}>&times;</Close>
         </ModalContent>
       </Modal>
     </Container>

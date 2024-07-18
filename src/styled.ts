@@ -117,6 +117,7 @@ const Display = styled.div`
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 100px;
+  margin-bottom: 50px;
 `;
 
 const UserEntry = styled.div<UserProps>`

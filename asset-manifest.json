@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Jelly_Beans_React/static/css/main.f55f6312.css",
+    "main.js": "/Jelly_Beans_React/static/js/main.5a856f64.js",
+    "static/media/logo.png": "/Jelly_Beans_React/static/media/logo.dbc636cd4c1c466fcda1.png",
+    "index.html": "/Jelly_Beans_React/index.html",
+    "main.f55f6312.css.map": "/Jelly_Beans_React/static/css/main.f55f6312.css.map",
+    "main.5a856f64.js.map": "/Jelly_Beans_React/static/js/main.5a856f64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f55f6312.css",
+    "static/js/main.5a856f64.js"
+  ]
+}

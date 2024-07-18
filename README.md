@@ -1,46 +1,62 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# JellyBeanGuessingGame
 
-In the project directory, you can run:
+## Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Running the App](#running-the-app)
+- [Gameplay](#gameplay)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Description
+JellyBeanGuessingGame is a web-based game where players guess the number of jelly beans in a jar. Each player submits their name and a guess, and the game provides feedback on how close their guess is to the actual number. After all players have guessed, the game announces the winner and restarts for a new round of fun.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+- User-friendly interface
+- Real-time feedback on guesses
+- Multiple players support
+- Automatic game restart after winner discovery
+- Responsive design
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/JellyBeanGuessingGame.git
+    cd JellyBeanGuessingGame
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-### `npm run build`
+### Running the App
+1. Start the development server:
+    ```bash
+    npm start
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Open your browser and navigate to:
+    ```
+    http://localhost:3000
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Gameplay
+1. Click the "Play" button to start the game.
+2. Enter the number of players and click "Start".
+3. Each player enters their name and guess (between 1 and 100).
+4. Submit the guess to receive feedback.
+5. After all players have guessed, click "Discover" to see the winner.
+6. The game restarts automatically for a new round.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies Used
+- React
+- TypeScript
+- Styled-components
